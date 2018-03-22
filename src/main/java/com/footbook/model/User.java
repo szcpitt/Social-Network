@@ -58,4 +58,9 @@ public class User {
         this.roles = roles;
     }
 
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "user")
+    private Profile profile;
+
 }

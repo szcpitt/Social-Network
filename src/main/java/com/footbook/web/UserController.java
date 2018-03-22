@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -60,23 +60,6 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String gender=userDetails.getGender();
-        model.addAttribute("gender",gender);
-        return "welcome";
-    }
-
-    @RequestMapping(value="/friends",method=RequestMethod.GET)
-    public String friends(){return "friends";}
-
-    @RequestMapping(value="/favorites",method=RequestMethod.GET)
-    public String favorites(){return "favorites";}
-
-    @RequestMapping(value="/calendar",method=RequestMethod.GET)
-    public String calendar(){return "calendar";}
-
-    @RequestMapping(value="/profile",method=RequestMethod.GET)
-    public String profile(){return "profile";}
+    public String welcome() { return "welcome"; }
 
 }

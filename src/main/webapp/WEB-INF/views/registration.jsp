@@ -56,15 +56,6 @@
                 </div>
             </spring:bind>
 
-            <spring:bind path="gender">
-                <div class="form-group">
-                    <form:select path="gender" class="form-control" placeholder="Your Gender">
-                        <form:option value="Male"></form:option>
-                        <form:option value="Female"></form:option>
-                    </form:select>
-                </div>
-            </spring:bind>
-
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form:form><br>
     </div>

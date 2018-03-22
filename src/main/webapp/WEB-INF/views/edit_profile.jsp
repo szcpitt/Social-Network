@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -33,7 +34,7 @@
     <li><a href="friends">Friends</a></li>
     <li><a href="favorites">Favorites</a></li>
     <li><a href="calendar">Calendar</a></li>
-    <li><a class="active">My Profile</a></li>
+    <li><a href="profile" class="active">My Profile</a></li>
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -47,10 +48,31 @@
 
     <div class="column-left2">
         <div class="card">
-            <p>First name: ${firstName}</p>
-            <p>Last name: ${lastName}</p>
-            <p>Gender: ${gender}</p>
-            <button><a href="/edit_profile">Edit My Profile</a></button>
+            <form:form method="POST" modelAttribute="profileForm" action="${contextPath}/profile">
+                <p>First Name</p>
+                <spring:bind path="firstName">
+                    <div>
+                        <form:input type="text" path="firstName" class="form-control" placeholder="First Name" autofocus="true"></form:input>
+                    </div>
+                </spring:bind>
+                <p>Last Name</p>
+                <spring:bind path="lastName">
+                    <div>
+                        <form:input type="text" path="lastName" class="form-control" placeholder="Last Name"></form:input>
+                    </div>
+                </spring:bind>
+                <p>Gender</p>
+                <spring:bind path="gender">
+                    <div class="form-group">
+                        <form:select path="gender" class="form-control">
+                            <form:option value="Male"></form:option>
+                            <form:option value="Female"></form:option>
+                        </form:select>
+                    </div>
+                </spring:bind>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </form:form><br>
         </div>
     </div>
 

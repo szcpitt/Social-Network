@@ -7,9 +7,11 @@ import javax.persistence.*;
 public class Profile {
 
     private Long id;
-    private String userId;
-    private String username;
+    private Long userid;
+    private String firstName;
+    private String lastName;
     private String gender;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,25 +23,32 @@ public class Profile {
         this.id = id;
     }
 
-    public String getUserId() { return userId; }
+    public Long getUserId() { return userid; }
 
-    public void setUserId(String userId) { this.userId = userId; }
+    public void setUserId(Long userId) { this.userid = userId; }
 
-    public String getUsername() { return username; }
+    public String getFirstName(){return firstName;}
 
-    public void setUsername(String username) { this.username = username; }
+    public void setFirstName(String firstName){this.firstName=firstName;}
+
+    public String getLastName(){return lastName;}
+
+    public void setLastName(String lastName){this.lastName=lastName;}
 
     public String getGender() { return gender; }
 
     public void setGender(String gender) { this.gender = gender; }
 
-    @OneToOne
-    @JoinTable(name = "user_profile", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Set<Role> getRoles() {
-        return roles;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userid", nullable = false)
+    private User user;
+
+    public Profile(){}
+
+    public Profile(String firstName,String lastName,String gender){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.gender=gender;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 }
