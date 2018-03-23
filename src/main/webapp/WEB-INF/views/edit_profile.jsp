@@ -47,7 +47,7 @@
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
 
     <div class="column-left2">
-        <div class="card">
+        <div class="card" style="padding: 4%">
             <form:form method="POST" modelAttribute="profileForm" action="${contextPath}/profile">
                 <p>First Name</p>
                 <spring:bind path="firstName">
@@ -88,8 +88,8 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
-<footer class="w3-container w3-padding-16" style="text-align: center;color: white">
-    <h2 style="font-weight: bold">Footbook</h2>
+<footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
+    <h2 style="font-weight: bold;margin-top: 0px;">Footbook</h2>
 </footer>
 
 </html>

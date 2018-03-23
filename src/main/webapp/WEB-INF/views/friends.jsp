@@ -47,7 +47,7 @@
 
     <div class="column-left2">
 
-        <div class="card">
+        <div class="card"  style="text-align: center">
             <p><strong>Your friends</strong></p>
             <hr>
             <p>John</p><hr>
@@ -56,19 +56,17 @@
 
     </div>
 
-    <div class="column-right">
+    <div class="column-right2">
 
-        <div class="card" style="text-align: center">
-            <p><strong>People You May Know</strong></p>
+        <div class="card">
+            <p style="text-align: center"><strong>People You May Know</strong></p>
             <hr>
-            <p>John</p><hr>
-            <p>Mike</p><hr>
-            <p>Marry</p><hr>
-            <p>Alice</p><hr>
-            <p>Peter</p><hr>
-            <p>Jack</p><hr>
-            <p>Johnson</p><hr>
-            <p>Andy</p><hr>
+            <c:forEach items="${peopleMap.keySet()}" var="key">
+                <p style="float:left;margin-left: 20px">${peopleMap[key]}</p>
+                <button class="w3-button w3-green" style="float: right;display: block;margin-top: 7px;width:15%;height:3%;vertical-align: bottom">Add</button>
+                <div style="clear:both"></div>
+                <hr>
+            </c:forEach>
         </div>
 
     </div>
@@ -79,8 +77,8 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
-<footer class="w3-container w3-padding-16" style="text-align: center;color: white">
-    <h2 style="font-weight: bold">Footbook</h2>
+<footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
+    <h2 style="font-weight: bold;margin-top: 0px;">Footbook</h2>
 </footer>
 
 </html>
