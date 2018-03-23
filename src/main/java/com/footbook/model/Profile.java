@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Profile {
 
     private Long id;
-    private Long userid;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String gender;
@@ -23,9 +23,9 @@ public class Profile {
         this.id = id;
     }
 
-    public Long getUserId() { return userid; }
+    public Long getUserId() { return userId; }
 
-    public void setUserId(Long userId) { this.userid = userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
     public String getFirstName(){return firstName;}
 

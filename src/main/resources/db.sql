@@ -40,7 +40,7 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userid` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,

@@ -50,7 +50,7 @@
             <p>First name: ${firstName}</p>
             <p>Last name: ${lastName}</p>
             <p>Gender: ${gender}</p>
-            <button><a href="/edit_profile">Edit My Profile</a></button>
+            <button><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
         </div>
     </div>
 

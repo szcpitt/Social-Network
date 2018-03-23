@@ -34,9 +34,11 @@ public class PageController {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long id=user.getId();
         Profile profile=profileService.findById(id);
-        model.addAttribute("firstName",profile.getFirstName());
-        model.addAttribute("lastName",profile.getLastName());
-        model.addAttribute("gender",profile.getGender());
+        if(profile!=null){
+            model.addAttribute("firstName",profile.getFirstName());
+            model.addAttribute("lastName",profile.getLastName());
+            model.addAttribute("gender",profile.getGender());
+        }
         return "profile";
     }
 
