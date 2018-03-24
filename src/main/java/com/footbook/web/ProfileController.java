@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ProfileController {
+
     @Autowired
     private ProfileRepository profileRepository;
     @Autowired

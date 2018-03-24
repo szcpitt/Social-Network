@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfileServiceImpl implements ProfileService {
     @Autowired
@@ -29,5 +31,10 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Profile findById(Long id) {
         return profileRepository.findById(id);
+    }
+
+    @Override
+    public List<Profile> findAll(){
+        return profileRepository.findAll();
     }
 }
