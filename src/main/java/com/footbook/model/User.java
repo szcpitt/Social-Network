@@ -7,11 +7,14 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
+
     private Long id;
     private String username;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
+
+    private Profile profile;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,6 +51,11 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
+    @OneToOne(mappedBy = "user")
+    public Profile getProfile() { return profile; }
+
+    public void setProfile(Profile profile) { this.profile = profile; }
+
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
@@ -57,10 +65,5 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "user")
-    private Profile profile;
 
 }

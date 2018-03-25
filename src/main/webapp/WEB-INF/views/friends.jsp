@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -50,8 +51,11 @@
         <div class="card"  style="text-align: center">
             <p><strong>Your friends</strong></p>
             <hr>
-            <p>John</p><hr>
-            <p>Mike</p><hr>
+            <c:forEach items="${friendsMap.keySet()}" var="key">
+                <p style="float:left;margin-left: 20px">${friendsMap[key]}</p>
+                <div style="clear:both"></div>
+                <hr>
+            </c:forEach>
         </div>
 
     </div>
@@ -63,7 +67,10 @@
             <hr>
             <c:forEach items="${peopleMap.keySet()}" var="key">
                 <p style="float:left;margin-left: 20px">${peopleMap[key]}</p>
-                <button class="w3-button w3-green" style="float: right;display: block;margin-top: 7px;width:15%;height:3%;vertical-align: bottom">Add</button>
+                <form action="/addFriends" method="POST">
+                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                    <button type="submit" name="friend_id" value="${key}" class="w3-button w3-green" style="float: right;display: block;margin-top: 7px;width:15%;height:3%;vertical-align: bottom">Add</button>
+                </form>
                 <div style="clear:both"></div>
                 <hr>
             </c:forEach>

@@ -20,11 +20,9 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public void save(Profile profile){
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        Long userid=user.getId();
-        profile.setUserId(userid);
-        profile.setFirstName(profile.getFirstName());
-        profile.setLastName(profile.getLastName());
-        profile.setGender(profile.getGender());
+        user.setProfile(profile);
+        profile.setUser(user);
+        profile.setUserId(user.getId());
         profileRepository.save(profile);
     }
 

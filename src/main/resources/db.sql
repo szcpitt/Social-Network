@@ -40,11 +40,12 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 --
@@ -62,5 +63,24 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `user_profile`
+-- Table structure for table `relationship`
 --
+
+DROP TABLE IF EXISTS `relationship` ;
+
+CREATE TABLE IF NOT EXISTS `relationship` (
+  `id` INT (11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `friend_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_user_has_user_id_idx` (`user_id` ASC),
+  INDEX `fk_user_has_friend_id_idx` (`friend_id` ASC),
+  CONSTRAINT `fk_user_has_user_id`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `user` (`id`)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_has_friend_id`
+  FOREIGN KEY (`friend_id`)
+  REFERENCES `user` (`id`)
+    ON DELETE CASCADE ON UPDATE CASCADE)
+  ENGINE = InnoDB;
