@@ -84,3 +84,11 @@ CREATE TABLE IF NOT EXISTS `relationship` (
   REFERENCES `user` (`id`)
     ON DELETE CASCADE ON UPDATE CASCADE)
   ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `blog`;
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

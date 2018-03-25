@@ -2,7 +2,6 @@ package com.footbook.web;
 
 
 import com.footbook.model.Profile;
-import com.footbook.model.Relationship;
 import com.footbook.model.User;
 import com.footbook.service.ProfileService;
 import com.footbook.service.RelationshipService;

@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -58,28 +59,34 @@
     <div class="column-middle">
         <div class="card">
             <h6 class="w3-opacity">Post something interesting!</h6>
-            <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
-            <button type="button" class="w3-button" style="background-color: #3b5998;color: white;"><i class="fa fa-pencil"></i> Post</button>
+            <form:form method="POST" modelAtrribute="newBlog" action="/addPost">
+                <p>Share something interesting!</p>
+                <spring:bind path="content">
+                    <form:input path="content" type="text" class="w3-border w3-padding"></form:input>
+                </spring:bind>
+                <button type="submit" class="w3-button" style="background-color: #3b5998;color: white;"><i class="fa fa-pencil"></i> Post</button>
+            </form:form>
         </div>
 
-        <div class="card">
-            <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <span class="w3-right w3-opacity">1 min</span>
-            <h4>John Doe</h4><br>
-            <hr class="w3-clear">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-half">
-                    <img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+        <c:forEach items="${blogMap.keySet()}" var="key">
+            <div class="card">
+                <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <span class="w3-right w3-opacity">1 min</span>
+                <h4>${key}</h4><br>
+                <hr class="w3-clear">
+                <p> ${blogMap[key]}</p>
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-half">
+                        <img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    </div>
+                    <div class="w3-half">
+                        <img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                    </div>
                 </div>
-                <div class="w3-half">
-                    <img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-                </div>
+                <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
+                <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-comment"></i> Comment</button>
             </div>
-            <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
-            <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-comment"></i> Comment</button>
-        </div>
-
+        </c:forEach>
     </div>
 
     <div class="column-right">
