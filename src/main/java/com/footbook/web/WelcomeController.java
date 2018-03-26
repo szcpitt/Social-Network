@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class WelcomeController {
@@ -31,20 +33,23 @@ public class WelcomeController {
     @Autowired
     private ProfileService profileService;
 
+
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model, @ModelAttribute("blogMap") HashMap<String, String> blogMap) {
+    public String welcome(Model model, @ModelAttribute("blogMap") ArrayList<Map<String, String>> blogList) {
         model.addAttribute("newBlog",new Blog());
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long userId=user.getId();
         List<Long> friends=relationshipService.findByUser_id(userId);
 
         //Add friends' blog
+        int i=0;
         for(Long friend_id:friends){
             List<String> friendBlogs=blogService.findBlogContentByUser_id(friend_id);
             Profile friendProfile=profileService.findById(friend_id);
             String friendName=friendProfile.getFirstName()+" "+friendProfile.getLastName();
-            for(String friend_blog:friendBlogs){
-                blogMap.put(friendName,friend_blog);
+            for(i=0;i<friendBlogs.size();i++){
+                blogList.add(new HashMap<>());
+                blogList.get(i).put(friendName,friendBlogs.get(i));
             }
         }
 
@@ -54,11 +59,12 @@ public class WelcomeController {
         if(myProfile!=null){
             String myName=myProfile.getFirstName()+" "+myProfile.getLastName();
             for(String myBlog:myBlogs){
-                String content=myBlog;
-                blogMap.put(myName,content);
+                blogList.add(new HashMap<>());
+                blogList.get(i).put(myName,myBlog);
+                i++;
             }
-            model.addAllAttributes(blogMap);
         }
+        model.addAttribute("blogList",blogList);
         return "welcome";
     }
 

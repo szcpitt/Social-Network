@@ -59,33 +59,35 @@
     <div class="column-middle">
         <div class="card">
             <h6 class="w3-opacity">Post something interesting!</h6>
-            <form:form method="POST" modelAtrribute="newBlog" action="/addPost">
-                <p>Share something interesting!</p>
+            <form:form method="POST" commandName="newBlog" modelAtrribute="newBlog" action="/addPost">
                 <spring:bind path="content">
-                    <form:input path="content" type="text" class="w3-border w3-padding"></form:input>
+                    <form:input path="content" type="text" class="w3-border w3-padding" cssStyle="width: 100%"></form:input>
                 </spring:bind>
+                <br><br>
                 <button type="submit" class="w3-button" style="background-color: #3b5998;color: white;"><i class="fa fa-pencil"></i> Post</button>
             </form:form>
         </div>
 
-        <c:forEach items="${blogMap.keySet()}" var="key">
-            <div class="card">
-                <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                <span class="w3-right w3-opacity">1 min</span>
-                <h4>${key}</h4><br>
-                <hr class="w3-clear">
-                <p> ${blogMap[key]}</p>
-                <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half">
-                        <img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
-                    </div>
-                    <div class="w3-half">
-                        <img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-                    </div>
+        <c:forEach items="${blogList}" var="map">
+            <c:forEach items="${map}" var="entry">
+                <div class="card">
+                    <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <span class="w3-right w3-opacity">1 min</span>
+                    <h4>${entry.key}</h4><br>
+                    <hr class="w3-clear">
+                    <p> ${entry.value}</p>
+                    <%--<div class="w3-row-padding" style="margin:0 -16px">--%>
+                        <%--<div class="w3-half">--%>
+                            <%--<img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">--%>
+                        <%--</div>--%>
+                        <%--<div class="w3-half">--%>
+                            <%--<img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
+                    <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-comment"></i> Comment</button>
                 </div>
-                <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
-                <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-comment"></i> Comment</button>
-            </div>
+            </c:forEach>
         </c:forEach>
     </div>
 
