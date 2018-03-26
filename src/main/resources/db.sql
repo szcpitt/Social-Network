@@ -92,3 +92,18 @@ CREATE TABLE `blog` (
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `calendar`;
+CREATE TABLE `calendar` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `userId` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `start` varchar(255) NOT NULL,
+  `end` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `calendar` (`id`,`userId`, `title`, `start`, `end`) VALUES
+  (1, 1,'test event', '2018-03-07', '2018-03-23'),
+  (2, 2,'web technology and standard', '2018-03-15', '2018-03-30');

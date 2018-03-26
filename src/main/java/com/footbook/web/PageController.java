@@ -52,9 +52,6 @@ public class PageController {
     @RequestMapping(value="/favorites",method=RequestMethod.GET)
     public String favorites(){return "favorites";}
 
-    @RequestMapping(value="/calendar",method=RequestMethod.GET)
-    public String calendar(){return "calendar";}
-
     @RequestMapping(value="/profile",method=RequestMethod.GET)
     public String profile(Model model){
         User user = userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
