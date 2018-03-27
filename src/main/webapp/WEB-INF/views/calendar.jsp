@@ -15,7 +15,7 @@
 <html>
 <head>
     <title>Title</title>
-    
+
     <link href='../../resources/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
     <link href='../../resources/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <link href="${contextPath}/resources/css/welcome.css" rel="stylesheet">
@@ -55,14 +55,6 @@
 
     </script>
     <style>
-
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-            font-size: 14px;
-        }
-
         #calendar {
             max-width: 900px;
             margin: 0 auto;
