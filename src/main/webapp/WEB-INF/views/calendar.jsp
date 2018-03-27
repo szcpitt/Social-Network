@@ -69,7 +69,9 @@
 <body>
 
 <div id='calendar'></div>
+<%--${calendarList}--%>
 
+<%--${user_id}--%>
 
 </body>
 </html>

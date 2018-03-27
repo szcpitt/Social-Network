@@ -1,9 +1,11 @@
 package com.footbook.web;
 
 import com.footbook.model.Calendar;
+import com.footbook.model.SmallCalendar;
 import com.footbook.model.User;
 import com.footbook.repository.UserRepository;
 import com.footbook.service.CalendarService;
+import com.footbook.util.Calendar2SmallCalendar;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,18 +21,41 @@ import java.util.List;
 public class CalendarController {
 
     @Autowired
-    private CalendarService calendarService;
+    private CalendarService CalendarService;
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private Calendar2SmallCalendar calendar2SmallCalendar;
+
     @RequestMapping(value = "/calendar", method = RequestMethod.GET)
-    public String listBlog(ModelAndView model){
+    public ModelAndView listBlog(ModelAndView model){
+
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long user_id=user.getId();
-        List<Calendar>  calendarList=calendarService.findByUserId(user_id);
-        String calListJson = new Gson().toJson(calendarList);
-        model.addObject("calendarList", calListJson);
+        int userId = (int)(long) user_id;
+
+        String user1 = user.toString();
+        model.addObject("user_id", user1);
         model.setViewName("calendar");
-        return "calendar";
+
+        List<Calendar> CalendarList = CalendarService.getAllCalendar(userId);
+
+        // convert Calender to small calendar
+        if (CalendarList.size() == 1){
+            SmallCalendar smallCalendar = calendar2SmallCalendar.convertOne(CalendarList.get(0));
+            String smallString = new Gson().toJson(smallCalendar);
+            model.addObject("calendarList", smallString);
+            return model;
+        } else if (CalendarList.size() > 1){
+            List<SmallCalendar> SmallList = calendar2SmallCalendar.ConvertAll(CalendarList);
+            String smallString = new Gson().toJson(SmallList);
+            model.addObject("calendarList", smallString);
+            return model;
+        } else {
+            model.addObject("calendarList", "");
+            return model;
+        }
+
     }
 }

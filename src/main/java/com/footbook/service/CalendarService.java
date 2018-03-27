@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface CalendarService {
 
-    void save(Calendar calendar);
+    public List<Calendar> getAllCalendar(int userId);
 
-    List<Calendar> findByUserId(Long userid);
-
+    public void addCalendar(Calendar calendar);
 
 }
