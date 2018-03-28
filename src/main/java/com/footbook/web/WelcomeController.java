@@ -35,33 +35,38 @@ public class WelcomeController {
 
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model, @ModelAttribute("blogMap") ArrayList<Map<String, String>> blogList) {
+    public String welcome(Model model, @ModelAttribute("blogMap") ArrayList<List<String>> blogList) {
         model.addAttribute("newBlog",new Blog());
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long userId=user.getId();
         List<Long> friends=relationshipService.findByUser_id(userId);
 
         //Add friends' blog
-        int i=0;
         for(Long friend_id:friends){
-            List<String> friendBlogs=blogService.findBlogContentByUser_id(friend_id);
+            List<Blog> friendBlogs=blogService.findByUserId(friend_id);
             Profile friendProfile=profileService.findById(friend_id);
             String friendName=friendProfile.getFirstName()+" "+friendProfile.getLastName();
-            for(i=0;i<friendBlogs.size();i++){
-                blogList.add(new HashMap<>());
-                blogList.get(i).put(friendName,friendBlogs.get(i));
+            for(Blog friendBlog:friendBlogs){
+                int i=blogList.size();
+                blogList.add(new ArrayList<>());
+                blogList.get(i).add(Long.toString(friendBlog.getId()));
+                blogList.get(i).add(friendName);
+                blogList.get(i).add(friendBlog.getContent());
             }
         }
 
         //Add user's blog
-        List<String> myBlogs=blogService.findBlogContentByUser_id(userId);
+        List<Blog> myBlogs=blogService.findByUserId(userId);
         Profile myProfile=profileService.findById(userId);
         if(myProfile!=null){
             String myName=myProfile.getFirstName()+" "+myProfile.getLastName();
-            for(String myBlog:myBlogs){
-                blogList.add(new HashMap<>());
-                blogList.get(i).put(myName,myBlog);
-                i++;
+            for(Blog myBlog:myBlogs){
+                int j=blogList.size();
+                blogList.add(new ArrayList<>());
+                blogList.get(j).add(Long.toString(myBlog.getId()));
+                blogList.get(j).add(myName);
+                blogList.get(j).add(myBlog.getContent());
+
             }
         }
         model.addAttribute("blogList",blogList);

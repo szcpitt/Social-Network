@@ -25,7 +25,7 @@ public class BlogController {
     public String post(@ModelAttribute("newBlog") Blog newBlog){
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long userId=user.getId();
-        newBlog.setUser_id(userId);
+        newBlog.setUserId(userId);
         blogService.save(newBlog);
 
         return "redirect:/welcome";

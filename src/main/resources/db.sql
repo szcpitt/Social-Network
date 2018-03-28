@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `relationship` (
 DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -107,3 +107,11 @@ CREATE TABLE `calendar` (
 INSERT INTO `calendar` (`id`,`userId`, `title`, `start`, `end`) VALUES
   (1, 1,'test event', '2018-03-07', '2018-03-23'),
   (2, 2,'web technology and standard', '2018-03-15', '2018-03-30');
+
+DROP TABLE IF EXISTS `favorite`;
+CREATE TABLE `favorite` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `blogId` INT(11) NOT NULL,
+  `ownerId` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -68,14 +68,14 @@
             </form:form>
         </div>
 
-        <c:forEach items="${blogList}" var="map">
-            <c:forEach items="${map}" var="entry">
+        <c:forEach items="${blogList}" var="blog">
+            <%--<c:forEach items="${blog}">--%>
                 <div class="card">
                     <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">1 min</span>
-                    <h4>${entry.key}</h4><br>
+                    <h4> ${blog[1]}</h4><br>
                     <hr class="w3-clear">
-                    <p> ${entry.value}</p>
+                    <p> ${blog[2]}</p>
                     <%--<div class="w3-row-padding" style="margin:0 -16px">--%>
                         <%--<div class="w3-half">--%>
                             <%--<img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">--%>
@@ -84,10 +84,14 @@
                             <%--<img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">--%>
                         <%--</div>--%>
                     <%--</div>--%>
-                    <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
-                    <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-comment"></i> Comment</button>
+                    <form action="/addFavorite" method="POST" style="float: left">
+                        <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                        <button type="submit" name="blogId" value="${blog[0]}" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
+                    </form>
+
+                    <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 10px;"><i class="fa fa-comment"></i> Comment</button>
                 </div>
-            </c:forEach>
+            <%--</c:forEach>--%>
         </c:forEach>
     </div>
 

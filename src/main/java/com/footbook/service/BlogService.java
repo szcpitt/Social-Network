@@ -8,5 +8,9 @@ import java.util.List;
 public interface BlogService {
     void save(Blog blog);
 
-    List<String> findBlogContentByUser_id(Long user_id);
+    List<String> findBlogContentByUserId(Long userId);
+
+    List<Blog> findByUserId(Long userId);
+
+    Blog findById(Long id);
 }

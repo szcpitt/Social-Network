@@ -19,8 +19,17 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<String> findBlogContentByUser_id(Long user_id){
-        return blogRepository.findBlogContentByUser_id(user_id);
+    public List<String> findBlogContentByUserId(Long userId){
+        return blogRepository.findBlogContentByUserId(userId);
     }
 
+    @Override
+    public List<Blog> findByUserId(Long userId){
+        return blogRepository.findByUserId(userId);
+    }
+
+    @Override
+    public Blog findById(Long id){
+        return blogRepository.findById(id);
+    }
 }

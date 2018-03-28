@@ -7,12 +7,12 @@ import javax.persistence.*;
 public class Blog {
 
     private Long id;
-    private Long user_id;
+    private Long userId;
     private String content;
 
-    public Blog(Long id, Long user_id, String content) {
+    public Blog(Long id, Long userId, String content) {
         this.id = id;
-        this.user_id = user_id;
+        this.userId = userId;
         this.content = content;
     }
 
@@ -24,9 +24,9 @@ public class Blog {
 
     public void setId(Long id) {this.id = id; }
 
-    public Long getUser_id() {return user_id; }
+    public Long getUserId() {return userId; }
 
-    public void setUser_id(Long user_id) {this.user_id = user_id; }
+    public void setUserId(Long userId) {this.userId = userId; }
 
     public String getContent() {return content; }
 

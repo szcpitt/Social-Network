@@ -45,7 +45,8 @@ public class CalendarController {
         if (CalendarList.size() == 1){
             SmallCalendar smallCalendar = calendar2SmallCalendar.convertOne(CalendarList.get(0));
             String smallString = new Gson().toJson(smallCalendar);
-            model.addObject("calendarList", smallString);
+            String smallString2 = "[" + smallString+ "]";
+            model.addObject("calendarList", smallString2);
             return model;
         } else if (CalendarList.size() > 1){
             List<SmallCalendar> SmallList = calendar2SmallCalendar.ConvertAll(CalendarList);

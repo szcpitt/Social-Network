@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Footbook</title>
 
     <link href='../../resources/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
     <link href='../../resources/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
@@ -82,9 +82,9 @@
 <hr><hr>
 
 <div id='calendar'></div>
-<%--${calendarList}--%>
+${calendarList}
 
-<%--${user_id}--%>
+${user_id}
 
 </body>
 </html>

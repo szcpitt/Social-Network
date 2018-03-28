@@ -5,6 +5,7 @@ import com.footbook.model.User;
 import com.footbook.repository.ProfileRepository;
 import com.footbook.repository.UserRepository;
 import com.footbook.service.ProfileService;
+import com.footbook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class ProfileController {
     private ProfileService profileService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value="/edit_profile",method=RequestMethod.GET)
     public String editProfile(Model model){
@@ -39,6 +42,19 @@ public class ProfileController {
             profileService.save(profileForm);
         }
         return "redirect:/profile";
+    }
+
+    @RequestMapping(value="/profile",method=RequestMethod.GET)
+    public String profile(Model model){
+        User user = userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long id=user.getId();
+        Profile profile=profileService.findById(id);
+        if(profile!=null){
+            model.addAttribute("firstName",profile.getFirstName());
+            model.addAttribute("lastName",profile.getLastName());
+            model.addAttribute("gender",profile.getGender());
+        }
+        return "profile";
     }
 
 }
