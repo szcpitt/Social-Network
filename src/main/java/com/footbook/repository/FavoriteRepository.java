@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
     List<Favorite> findByOwnerId(Long ownerId);
+
+    Favorite findByBlogIdAndOwnerId(Long blogId,Long ownerId);
 }

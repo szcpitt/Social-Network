@@ -8,4 +8,6 @@ public interface FavoriteService {
     List<Favorite> findByOwnerId(Long ownerId);
 
     void save(Favorite favorite);
+
+    Favorite findByBlogIdAndOwnerId(Long blogId,Long ownerId);
 }

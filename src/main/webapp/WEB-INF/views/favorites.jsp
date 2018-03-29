@@ -46,7 +46,7 @@
 
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
 
-    <div class="column-middle">
+    <div class="column-middle" style="margin-left: 20%">
 
         <c:forEach items="${blogList}" var="blog">
             <%--<c:forEach items="${blog}">--%>
@@ -69,30 +69,6 @@
         </c:forEach>
     </div>
 
-    <div class="column-right">
-
-        <div class="card" style="text-align: center">
-            <p>Upcoming Events:</p>
-            <img src="/resources/img/forest.jpg" alt="Forest" style="width:100%;">
-            <p><strong>Holiday</strong></p>
-            <p>Friday 15:00</p>
-            <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-        </div>
-
-        <div class="card" style="text-align: center">
-            <p>Friend Request</p>
-            <img src="/resources/img/avatar6.png" alt="Avatar" style="width:50%"><br>
-            <span>Jane Doe</span>
-            <div class="w3-row w3-opacity">
-                <div class="w3-half">
-                    <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-                </div>
-                <div class="w3-half">
-                    <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- /container -->

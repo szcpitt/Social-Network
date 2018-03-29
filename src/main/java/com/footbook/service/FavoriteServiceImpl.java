@@ -22,4 +22,9 @@ public class FavoriteServiceImpl implements FavoriteService{
     public void save(Favorite favorite){
         favoriteRepository.save(favorite);
     }
+
+    @Override
+    public Favorite findByBlogIdAndOwnerId(Long blogId,Long ownerId){
+        return favoriteRepository.findByBlogIdAndOwnerId(blogId,ownerId);
+    }
 }

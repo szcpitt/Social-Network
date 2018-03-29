@@ -67,7 +67,7 @@
                 <button type="submit" class="w3-button" style="background-color: #3b5998;color: white;"><i class="fa fa-pencil"></i> Post</button>
             </form:form>
         </div>
-
+        <p id="blogListSize" style="display: none"><c:out value='${blogList.size()}'/></p>
         <c:forEach items="${blogList}" var="blog">
             <%--<c:forEach items="${blog}">--%>
                 <div class="card">
@@ -84,11 +84,12 @@
                             <%--<img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">--%>
                         <%--</div>--%>
                     <%--</div>--%>
-                    <form action="/addFavorite" method="POST" style="float: left">
+                    <p id="checkAdded${blog[0]}" style="display: none">${blog[3]}</p>
+                    <form id="likeForm${blog[0]}"action="/addFavorite" method="POST" style="float: left">
                         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
-                        <button type="submit" name="blogId" value="${blog[0]}" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
+                        <button id="beforeClickLike" type="submit" name="blogId" value="${blog[0]}" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
                     </form>
-
+                    <button id="afterClickLike${blog[0]}" type="button" class="w3-button w3-margin-bottom" style="background-color: #ccc;color: black;display: none"><i class="fa fa-thumbs-up"></i> Liked</button>
                     <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 10px;"><i class="fa fa-comment"></i> Comment</button>
                 </div>
             <%--</c:forEach>--%>
@@ -124,6 +125,7 @@
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${contextPath}/resources/js/welcome.js"></script>
 </body>
 
 <footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
