@@ -50,7 +50,7 @@
             <p>First name: ${firstName}</p>
             <p>Last name: ${lastName}</p>
             <p>Gender: ${gender}</p>
-            <button><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
+            <button class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
         </div>
     </div>
 
@@ -66,8 +66,5 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
-<footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
-    <h2 style="font-weight: bold;margin-top: 0px;">Footbook</h2>
-</footer>
 
 </html>

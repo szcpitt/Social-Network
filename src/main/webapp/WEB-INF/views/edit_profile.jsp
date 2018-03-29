@@ -71,7 +71,7 @@
                     </div>
                 </spring:bind>
                 <br>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                <button class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;" type="submit">Submit</button>
             </form:form><br>
         </div>
     </div>
@@ -88,8 +88,5 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
-<footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
-    <h2 style="font-weight: bold;margin-top: 0px;">Footbook</h2>
-</footer>
 
 </html>

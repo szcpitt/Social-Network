@@ -10,4 +10,6 @@ public interface CalendarService {
 
     public void addCalendar(Calendar calendar);
 
+    public Calendar getUpcomingEvent(int user_id);
+
 }

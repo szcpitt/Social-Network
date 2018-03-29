@@ -84,8 +84,5 @@
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
-<footer class="w3-container w3-padding-16" style="text-align: center;color: white;height:70px">
-    <h2 style="font-weight: bold;margin-top: 0px;">Footbook</h2>
-</footer>
 
 </html>

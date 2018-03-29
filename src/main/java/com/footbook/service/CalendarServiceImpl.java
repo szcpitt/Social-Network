@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ *
+ *
+ */
 @Service
 @Transactional
 public class CalendarServiceImpl implements CalendarService{
@@ -23,5 +27,10 @@ public class CalendarServiceImpl implements CalendarService{
     @Override
     public void addCalendar(Calendar calendar) {
         calendarDao.addCalendar(calendar);
+    }
+
+    @Override
+    public Calendar getUpcomingEvent(int user_id) {
+        return calendarDao.upcoming(user_id);
     }
 }

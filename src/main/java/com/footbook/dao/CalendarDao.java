@@ -12,4 +12,7 @@ public interface CalendarDao {
     // add a new calendar
     public void addCalendar(Calendar calendar);
 
+    // get the upcoming
+    public Calendar upcoming(int user_id);
+
 }

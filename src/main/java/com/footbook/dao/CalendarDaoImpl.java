@@ -39,4 +39,18 @@ public class CalendarDaoImpl implements CalendarDao {
         Session session = sessionFactory.getCurrentSession();
         session.save(calendar);
     }
+
+    @Override
+    public Calendar upcoming(int user_id) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from Calendar where userId=:user_id ORDER BY start";
+        Query query = session.createQuery(hql);
+        query.setParameter("user_id", user_id);
+
+        query.setMaxResults(1);
+
+        Calendar calendar = (Calendar) query.uniqueResult();
+        return calendar;
+
+    }
 }

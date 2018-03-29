@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Footbook</title>
+    <title>My Calendar</title>
 
     <link href='../../resources/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
     <link href='../../resources/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
@@ -27,24 +27,41 @@
     <script src='../../resources/fullcalendar/fullcalendar.min.js'></script>
     <script>
 
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+dd
+        }
+
+        if(mm<10) {
+            mm = '0'+mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+
         $(document).ready(function() {
 
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'listDay,listWeek,month'
+                    right: 'month, listWeek,listDay'
                 },
 
                 // customize the button names,
                 // otherwise they'd all just say "list"
                 views: {
+                    listMonth:{buttonText: 'Month'},
                     listDay: { buttonText: 'list day' },
                     listWeek: { buttonText: 'list week' }
                 },
 
-                defaultView: 'listWeek',
-                defaultDate: '2018-03-12',
+                defaultView: 'month',
+                defaultDate: today,
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
@@ -61,6 +78,9 @@
         }
 
     </style>
+    <%--validate date--%>
+
+
 </head>
 <body style="padding:0px;margin: 0px;">
 <ul id="navbar" style="height: 48px">
@@ -81,10 +101,54 @@
 
 <hr><hr>
 
+
+
+
+
+<%--${calendarList}--%>
+
+<%--${user_id}--%>
 <div id='calendar'></div>
-${calendarList}
 
-${user_id}
+<div class="row" style="margin-top: 10px;margin-left: 8%;">
+    <div class="column-middle" style="width: 71%;margin-left: 10%">
+        <div class="card">
+            <h6 class="w3-opacity">Add A New Calendar!!</h6>
+            <%--add a calendar--%>
+            <form:form method="post" modelAttribute="newCalendar">
 
+                <spring:bind path="title">
+                    Title: <form:input path="title" type="text" required="required"></form:input>
+                </spring:bind>
+
+                <spring:bind path="start">
+                    <label>Start Date: <form:input path="start" type="date" required="required"></form:input></label>
+                </spring:bind>
+
+                <spring:bind path="end">
+                    <label>End Date: <form:input path="end" type="date" required="required"></form:input></label>
+                </spring:bind>
+
+                <button type="submit" class="w3-button w3-block" style="background-color: #3b5998;color: white; margin-top: 5px"><i class="fa fa-pencil"></i> Add An Event!</button>
+            </form:form>
+        </div>
+    </div>
+
+</div>
+<script>
+    var start = document.getElementById('start');
+    var end = document.getElementById('end');
+
+    start.addEventListener('change', function() {
+        if (start.value)
+            end.min = start.value;
+    }, false);
+
+    end.addEventLiseter('change', function() {
+        if (end.value)
+            start.max = end.value;
+    }, false);
+
+</script>
 </body>
 </html>
