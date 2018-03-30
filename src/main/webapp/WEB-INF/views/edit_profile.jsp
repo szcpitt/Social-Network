@@ -46,8 +46,8 @@
 
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
 
-    <div class="column-left2">
-        <div class="card" style="padding: 4%">
+    <div class="column-middle" style="margin-left: 10%;width:70%">
+        <div class="card" style="padding: 6%;font-size: 18px">
             <form:form method="POST" modelAttribute="profileForm" action="${contextPath}/profile">
                 <p>First Name</p>
                 <spring:bind path="firstName">
@@ -76,11 +76,6 @@
         </div>
     </div>
 
-    <div class="column-right">
-        <div class="card" style="text-align: center">
-
-        </div>
-    </div>
 </div>
 
 <!-- /container -->

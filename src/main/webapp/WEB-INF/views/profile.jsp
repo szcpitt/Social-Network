@@ -45,8 +45,8 @@
 
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
 
-    <div class="column-left2">
-        <div class="card" style="padding: 4%">
+    <div class="column-middle" style="margin-left: 10%;width:70%">
+        <div class="card" style="padding: 6%;font-size: 18px;">
             <p>First name: ${firstName}</p>
             <p>Last name: ${lastName}</p>
             <p>Gender: ${gender}</p>
@@ -54,11 +54,7 @@
         </div>
     </div>
 
-    <div class="column-right">
-        <div class="card" style="text-align: center">
 
-        </div>
-    </div>
 </div>
 
 <!-- /container -->
