@@ -72,14 +72,14 @@
         <p id="blogListSize" style="display: none"><c:out value='${blogList.size()}'/></p>
         <c:forEach items="${blogList}" var="blog">
                 <div class="card">
-                    <img src="${blog[1]}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <img src="${blog[1]}" alt="Profile Image" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">1 min</span>
                     <h4> ${blog[2]}</h4><br>
                     <hr class="w3-clear">
                     <p> ${blog[3]}</p>
                     <div class="w3-row-padding" style="margin:0 -16px">
                         <div class="w3-half">
-                            <img src="${blog[4]}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                            <img id="postImage${blog[0]}" src="${blog[4]}" onerror="this.onerror=null;this.src='notFound';this.style.display='none'" style="width:100%" alt="Post Image" class="w3-margin-bottom">
                         </div>
                     </div>
                     <p id="checkAdded${blog[0]}" style="display: none">${blog[5]}</p>

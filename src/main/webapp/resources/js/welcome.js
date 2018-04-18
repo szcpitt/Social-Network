@@ -8,6 +8,6 @@ for(var i=1;i<=num;i++) {
     if (status == "added") {
         form.style.display = "none";
         newButton.style.display = "inline-block";
-
     }
 }
+

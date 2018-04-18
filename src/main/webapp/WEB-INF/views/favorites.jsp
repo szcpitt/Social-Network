@@ -51,14 +51,14 @@
         <c:forEach items="${blogList}" var="blog">
             <%--<c:forEach items="${blog}">--%>
             <div class="card">
-                <img src="${blog[0]}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <img src="${blog[0]}" alt="Profile Image" class="w3-left w3-circle w3-margin-right" style="width:60px">
                 <span class="w3-right w3-opacity">1 min</span>
                 <h4> ${blog[1]}</h4><br>
                 <hr class="w3-clear">
                 <p> ${blog[2]}</p>
                 <div class="w3-row-padding" style="margin:0 -16px">
                     <div class="w3-half">
-                    <img src="${blog[3]}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    <img src="${blog[3]}" onerror="this.onerror=null;this.src='notFound';this.style.display='none'" style="width:100%" alt="Post Image" class="w3-margin-bottom">
                     </div>
                 </div>
             </div>

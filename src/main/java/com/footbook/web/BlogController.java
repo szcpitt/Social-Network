@@ -38,17 +38,20 @@ public class BlogController {
         Long userId=user.getId();
         newBlog.setUserId(userId);
         // Upload image to server
-        String contextPath=servletContext.getRealPath("/");
-        List<Blog> blogs=blogService.findByUserId(userId);
-        int blogSize=blogs.size();
-        String fileName=user.getUsername()+"Blog"+blogSize+".jpg";
-        String destinationPath=contextPath+"/resources/img/blogImages/"+fileName;
-        BufferedImage src = ImageIO.read(new ByteArrayInputStream(file.getBytes()));
-        File destination = new File(destinationPath);
-        ImageIO.write(src, "jpg", destination);
+        if(!file.isEmpty()){
+            String contextPath=servletContext.getRealPath("/");
+            List<Blog> blogs=blogService.findByUserId(userId);
+            int blogSize=blogs.size();
+            String fileName=user.getUsername()+"Blog"+blogSize+".jpg";
+            String destinationPath=contextPath+"/resources/img/blogImages/"+fileName;
+            BufferedImage src = ImageIO.read(new ByteArrayInputStream(file.getBytes()));
+            File destination = new File(destinationPath);
+            ImageIO.write(src, "jpg", destination);
 
-        //Save Image URL to DB
-        newBlog.setImage("/resources/img/blogImages/"+fileName);
+            //Save Image URL to DB
+            newBlog.setImage("/resources/img/blogImages/"+fileName);
+        }
+
         blogService.save(newBlog);
 
         return "redirect:/welcome";
