@@ -99,12 +99,13 @@
     <div class="column-right">
 
         <div class="card" style="text-align: center">
-            <p>Upcoming Events:</p>
+            <p>Upcoming Event:</p>
             <img src="/resources/img/forest.jpg" alt="Forest" style="width:100%;">
-            <p><strong>Holiday</strong></p>
-            <p>Friday 15:00</p>
-            <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+            <p><strong>${upcoming.title}</strong></p>
+            <p>Start: ${upcoming.start}</p>
+            <p>End: ${upcoming.end}</p>
         </div>
+
 
         <div class="card" style="text-align: center">
             <p>Friend Request</p>

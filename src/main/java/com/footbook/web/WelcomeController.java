@@ -1,14 +1,8 @@
 package com.footbook.web;
 
-import com.footbook.model.Blog;
-import com.footbook.model.Favorite;
-import com.footbook.model.Profile;
-import com.footbook.model.User;
+import com.footbook.model.*;
 import com.footbook.repository.UserRepository;
-import com.footbook.service.BlogService;
-import com.footbook.service.FavoriteService;
-import com.footbook.service.ProfileService;
-import com.footbook.service.RelationshipService;
+import com.footbook.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,6 +30,8 @@ public class WelcomeController {
     private ProfileService profileService;
     @Autowired
     private FavoriteService favoriteService;
+    @Autowired
+    private CalendarService calendarService;
 
     public ArrayList<List<String>> addBlog(ArrayList<List<String>> blogList,List<Blog> blogs,String name,Long id){
         for(Blog blog:blogs){
@@ -77,6 +73,15 @@ public class WelcomeController {
             blogList=addBlog(blogList,myBlogs,myName,userId);
         }
         model.addAttribute("blogList",blogList);
+
+        //Add calendar
+        int user_id=(int)(long)userId;
+        List<Calendar> calendarList = calendarService.getAllCalendar(user_id);
+        model.addAttribute("calendarList", calendarList);
+
+        Calendar upcomingCalendar = calendarService.getUpcomingEvent(user_id);
+        model.addAttribute("upcoming", upcomingCalendar);
+
         return "welcome";
     }
 
