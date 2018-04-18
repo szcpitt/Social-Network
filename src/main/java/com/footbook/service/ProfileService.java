@@ -11,4 +11,6 @@ public interface ProfileService {
     Profile findById(Long id);
 
     List<Profile> findAll();
+
+    void setImageById(String image);
 }

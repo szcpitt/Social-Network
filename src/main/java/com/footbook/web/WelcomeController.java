@@ -33,13 +33,15 @@ public class WelcomeController {
     @Autowired
     private CalendarService calendarService;
 
-    public ArrayList<List<String>> addBlog(ArrayList<List<String>> blogList,List<Blog> blogs,String name,Long id){
+    public ArrayList<List<String>> addBlog(ArrayList<List<String>> blogList,List<Blog> blogs,String name,String profileImage,Long id){
         for(Blog blog:blogs){
             int i=blogList.size();
             blogList.add(new ArrayList<>());
             blogList.get(i).add(Long.toString(blog.getId()));
+            blogList.get(i).add(profileImage);
             blogList.get(i).add(name);
             blogList.get(i).add(blog.getContent());
+            blogList.get(i).add(blog.getImage());
             Favorite favorite=favoriteService.findByBlogIdAndOwnerId(blog.getId(),id);
             if(favorite!=null){
                 blogList.get(i).add("added");
@@ -56,6 +58,17 @@ public class WelcomeController {
         model.addAttribute("newBlog",new Blog());
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long userId=user.getId();
+        Profile profile=profileService.findById(userId);
+        if(profile!=null){
+            if(profile.getImage()!=null){ model.addAttribute("myImage",profile.getImage()); }
+            else{ model.addAttribute("myImage","/resources/img/avatar3.png"); }
+            if(profile.getFirstName()!=null && profile.getLastName()!=null){
+                model.addAttribute("myName",profile.getFirstName()+" "+profile.getLastName());
+            }else{model.addAttribute("myName","My Name");}
+        }else{
+            model.addAttribute("myImage","/resources/img/avatar3.png");
+            model.addAttribute("myName","My Name");
+        }
         List<Long> friends=relationshipService.findByUser_id(userId);
 
         //Add friends' blog
@@ -63,14 +76,16 @@ public class WelcomeController {
             List<Blog> friendBlogs=blogService.findByUserId(friend_id);
             Profile friendProfile=profileService.findById(friend_id);
             String friendName=friendProfile.getFirstName()+" "+friendProfile.getLastName();
-            blogList=addBlog(blogList,friendBlogs,friendName,userId);
+            String friendProfileImage=friendProfile.getImage();
+            blogList=addBlog(blogList,friendBlogs,friendName,friendProfileImage,userId);
         }
         //Add user's blog
         List<Blog> myBlogs=blogService.findByUserId(userId);
         Profile myProfile=profileService.findById(userId);
         if(myProfile!=null){
             String myName=myProfile.getFirstName()+" "+myProfile.getLastName();
-            blogList=addBlog(blogList,myBlogs,myName,userId);
+            String myProfileImage=myProfile.getImage();
+            blogList=addBlog(blogList,myBlogs,myName,myProfileImage,userId);
         }
         model.addAttribute("blogList",blogList);
 

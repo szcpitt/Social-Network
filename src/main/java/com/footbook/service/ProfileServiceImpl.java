@@ -35,4 +35,11 @@ public class ProfileServiceImpl implements ProfileService {
     public List<Profile> findAll(){
         return profileRepository.findAll();
     }
+
+    @Override
+    public void setImageById(String image){
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long userId=user.getId();
+        profileRepository.setImageById(image,userId);
+    }
 }

@@ -51,8 +51,11 @@ public class FavoriteController {
             Blog blog=blogService.findById(favorite.getBlogId());
             Profile friendProfile=profileService.findById(blog.getUserId());
             String friendName=friendProfile.getFirstName()+" "+friendProfile.getLastName();
+            String profileImage=friendProfile.getImage();
+            blogList.get(i).add(profileImage);
             blogList.get(i).add(friendName);
             blogList.get(i).add(blog.getContent());
+            blogList.get(i).add(blog.getImage());
         }
         model.addAttribute(blogList);
         return "favorites";

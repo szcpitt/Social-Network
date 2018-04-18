@@ -9,11 +9,13 @@ public class Blog {
     private Long id;
     private Long userId;
     private String content;
+    private String image;
 
-    public Blog(Long id, Long userId, String content) {
+    public Blog(Long id, Long userId, String content, String image) {
         this.id = id;
         this.userId = userId;
         this.content = content;
+        this.image = image;
     }
 
     public Blog(){}
@@ -31,5 +33,9 @@ public class Blog {
     public String getContent() {return content; }
 
     public void setContent(String content) {this.content = content; }
+
+    public String getImage(){ return image;}
+
+    public void setImage(String image){ this.image=image;}
 
 }

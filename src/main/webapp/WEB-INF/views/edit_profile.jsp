@@ -48,6 +48,11 @@
 
     <div class="column-middle" style="margin-left: 10%;width:70%">
         <div class="card" style="padding: 6%;font-size: 18px">
+            <p class="w3-center"><img src="${myImage}" class="w3-circle" style="height:106px;width:106px"></p><br>
+            <form method="POST" action="/upLoadFile?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+                Please select a image to upload : <input type="file" name="file" />
+                <input type="submit" value="Upload" />
+            </form>
             <form:form method="POST" modelAttribute="profileForm" action="${contextPath}/profile">
                 <p>First Name</p>
                 <spring:bind path="firstName">

@@ -46,11 +46,13 @@
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
 
     <div class="column-middle" style="margin-left: 10%;width:70%">
+
         <div class="card" style="padding: 6%;font-size: 18px;">
-            <p>First name: ${firstName}</p>
-            <p>Last name: ${lastName}</p>
-            <p>Gender: ${gender}</p>
-            <button class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
+            <p class="w3-center"><img src="${myImage}" class="w3-circle" style="height:106px;width:106px"></p><br>
+            <p class="w3-center">First name: ${firstName}</p>
+            <p class="w3-center">Last name: ${lastName}</p>
+            <p class="w3-center">Gender: ${gender}</p>
+            <button class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 41%"><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
         </div>
     </div>
 

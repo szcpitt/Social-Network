@@ -12,6 +12,7 @@ public class Profile {
     private String firstName;
     private String lastName;
     private String gender;
+    private String image;
 
     private User user;
 
@@ -40,6 +41,10 @@ public class Profile {
     public String getGender() { return gender; }
 
     public void setGender(String gender) { this.gender = gender; }
+
+    public String getImage(){ return image;}
+
+    public void setImage(String image){ this.image=image;}
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "userId",insertable = false, updatable = false)

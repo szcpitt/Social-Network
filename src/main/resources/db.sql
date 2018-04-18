@@ -44,6 +44,7 @@ CREATE TABLE `profile` (
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -90,6 +91,7 @@ CREATE TABLE `blog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `content` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -104,9 +106,9 @@ CREATE TABLE `calendar` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `calendar` (`id`,`userId`, `title`, `start`, `end`) VALUES
-  (1, 1,'test event', '2018-03-07', '2018-03-23'),
-  (2, 2,'web technology and standard', '2018-03-15', '2018-03-30');
+# INSERT INTO `calendar` (`id`,`userId`, `title`, `start`, `end`) VALUES
+#   (1, 1,'test event', '2018-03-07', '2018-03-23'),
+#   (2, 2,'web technology and standard', '2018-03-15', '2018-03-30');
 
 DROP TABLE IF EXISTS `favorite`;
 CREATE TABLE `favorite` (

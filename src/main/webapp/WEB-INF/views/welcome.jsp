@@ -47,8 +47,8 @@
 <div class="row" style="margin-top: 80px;margin-left: 8%;">
     <div class="column-left">
         <div class="card">
-            <h4 class="w3-center">My Profile</h4>
-            <p class="w3-center"><img src="/resources/img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+            <h4 class="w3-center">${myName}</h4>
+            <p class="w3-center"><img src="${myImage}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
             <hr>
             <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
             <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
@@ -59,32 +59,30 @@
     <div class="column-middle">
         <div class="card">
             <h6 class="w3-opacity">Post something interesting!</h6>
-            <form:form method="POST" commandName="newBlog" modelAtrribute="newBlog" action="/addPost">
+            <form:form method="POST" commandName="newBlog" modelAtrribute="newBlog" action="/addPost?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
                 <spring:bind path="content">
                     <form:input path="content" type="text" class="w3-border w3-padding" cssStyle="width: 100%"></form:input>
                 </spring:bind>
+                <br><br>
+                Select a image <input type="file" name="file" />
                 <br><br>
                 <button type="submit" class="w3-button" style="background-color: #3b5998;color: white;"><i class="fa fa-pencil"></i> Post</button>
             </form:form>
         </div>
         <p id="blogListSize" style="display: none"><c:out value='${blogList.size()}'/></p>
         <c:forEach items="${blogList}" var="blog">
-            <%--<c:forEach items="${blog}">--%>
                 <div class="card">
-                    <img src="/resources/img/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <img src="${blog[1]}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">1 min</span>
-                    <h4> ${blog[1]}</h4><br>
+                    <h4> ${blog[2]}</h4><br>
                     <hr class="w3-clear">
-                    <p> ${blog[2]}</p>
-                    <%--<div class="w3-row-padding" style="margin:0 -16px">--%>
-                        <%--<div class="w3-half">--%>
-                            <%--<img src="/resources/img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">--%>
-                        <%--</div>--%>
-                        <%--<div class="w3-half">--%>
-                            <%--<img src="/resources/img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <p id="checkAdded${blog[0]}" style="display: none">${blog[3]}</p>
+                    <p> ${blog[3]}</p>
+                    <div class="w3-row-padding" style="margin:0 -16px">
+                        <div class="w3-half">
+                            <img src="${blog[4]}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                        </div>
+                    </div>
+                    <p id="checkAdded${blog[0]}" style="display: none">${blog[5]}</p>
                     <form id="likeForm${blog[0]}"action="/addFavorite" method="POST" style="float: left">
                         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
                         <button id="beforeClickLike" type="submit" name="blogId" value="${blog[0]}" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
@@ -92,7 +90,6 @@
                     <button id="afterClickLike${blog[0]}" type="button" class="w3-button w3-margin-bottom" style="background-color: #ccc;color: black;display: none"><i class="fa fa-thumbs-up"></i> Liked</button>
                     <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 10px;"><i class="fa fa-comment"></i> Comment</button>
                 </div>
-            <%--</c:forEach>--%>
         </c:forEach>
     </div>
 
