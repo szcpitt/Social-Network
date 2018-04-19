@@ -27,8 +27,8 @@
 </head>
 <body style="background-color: #f7f7f7">
 
-<ul id="navbar" style="height: 48px">
-    <li style="margin-left: 15px;"><p style="color: white;font-weight:bold;margin-right: 15px;margin-top: 10px;font-size: 22px;">Footbook</p></li>
+<ul id="navbar">
+    <li id="logoLi"><p id="logoP">Footbook</p></li>
     <li><a href="welcome">Home</a></li>
     <li><a href="friends">Friends</a></li>
     <li><a href="favorites">Favorites</a></li>
@@ -39,20 +39,20 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <p style="text-align: right;margin-right: 5px;color: white">Welcome ${pageContext.request.userPrincipal.name} | <a id="logout"onclick="document.forms['logoutForm'].submit()">Logout</a></p>
+        <p id="logoutP">Welcome ${pageContext.request.userPrincipal.name} | <a id="logout"onclick="document.forms['logoutForm'].submit()">Logout</a></p>
     </c:if>
 </ul>
 
-<div class="row" style="margin-top: 80px;margin-left: 8%;">
+<div class="row">
 
-    <div class="column-middle" style="margin-left: 10%;width:70%">
+    <div class="column-middle" id="profileCol">
 
         <div class="card" style="padding: 6%;font-size: 18px;">
             <p class="w3-center"><img src="${myImage}" class="w3-circle" style="height:106px;width:106px"></p><br>
             <p class="w3-center">First name: ${firstName}</p>
             <p class="w3-center">Last name: ${lastName}</p>
             <p class="w3-center">Gender: ${gender}</p>
-            <button class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 41%"><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
+            <button class="w3-button w3-margin-bottom" id="editProfile"><a href="/edit_profile" style="text-decoration:none;" >Edit My Profile</a></button>
         </div>
     </div>
 

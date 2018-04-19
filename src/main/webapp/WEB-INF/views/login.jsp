@@ -24,13 +24,39 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body {
+            background-color: #3b5998;
+        }
+        .card2 {
+            width: 40%;
+            margin-top: 10%;
+            text-align: center;
+            box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+            background-color: #ffffff;
+            padding: 12px;
+            margin-left: 30%;
+        }
+        @media only screen and (max-width: 600px) {
+            .card2 {
+                margin: 3%;
+                width: 95%;
+            }
+        }
+        @media only screen and (min-width:600px)  and (max-width: 1100px) {
+            .card2 {
+                margin-left: 18%;
+                width: 65%;
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color: #3b5998">
+<body>
 
 <div class="container">
 
-    <div class="card" style="width:40%;margin-top: 10%;text-align: center">
+    <div class="card2">
         <form method="POST" action="${contextPath}/login" class="form-signin">
             <h2 class="form-heading" style="color:#555;font-weight:bold;font-size:28px;">Welcome to Footbook</h2><br>
 

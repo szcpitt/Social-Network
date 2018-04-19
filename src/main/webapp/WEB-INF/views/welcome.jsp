@@ -28,8 +28,8 @@
 </head>
 <body style="background-color: #f7f7f7">
 
-<ul id="navbar" style="height: 48px">
-    <li style="margin-left: 15px;"><p style="color: white;font-weight:bold;margin-right: 15px;margin-top: 10px;font-size: 22px;">Footbook</p></li>
+<ul id="navbar">
+    <li id="logoLi"><p id="logoP">Footbook</p></li>
     <li><a class="active">Home</a></li>
     <li><a href="friends">Friends</a></li>
     <li><a href="favorites">Favorites</a></li>
@@ -40,11 +40,11 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <p style="text-align: right;margin-right: 5px;color: white">Welcome ${pageContext.request.userPrincipal.name} | <a id="logout"onclick="document.forms['logoutForm'].submit()">Logout</a></p>
+        <p id="logoutP">Welcome ${pageContext.request.userPrincipal.name} | <a id="logout"onclick="document.forms['logoutForm'].submit()">Logout</a></p>
     </c:if>
 </ul>
 
-<div class="row" style="margin-top: 80px;margin-left: 8%;">
+<div class="row">
     <div class="column-left">
         <div class="card">
             <h4 class="w3-center">${myName}</h4>
