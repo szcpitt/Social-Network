@@ -57,7 +57,7 @@
                 <hr class="w3-clear">
                 <p> ${blog[2]}</p>
                 <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half">
+                    <div style="margin: 5%">
                     <img src="${blog[3]}" onerror="this.onerror=null;this.src='notFound';this.style.display='none'" style="width:100%" alt="Post Image" class="w3-margin-bottom">
                     </div>
                 </div>

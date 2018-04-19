@@ -37,7 +37,7 @@ public class WelcomeController {
         for(Blog blog:blogs){
             int i=blogList.size();
             blogList.add(new ArrayList<>());
-            blogList.get(i).add(Long.toString(blog.getId()));
+            blogList.get(i).add(Integer.toString(i+1));
             blogList.get(i).add(profileImage);
             blogList.get(i).add(name);
             blogList.get(i).add(blog.getContent());

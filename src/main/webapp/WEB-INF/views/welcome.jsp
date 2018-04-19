@@ -50,9 +50,9 @@
             <h4 class="w3-center">${myName}</h4>
             <p class="w3-center"><img src="${myImage}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
             <hr>
-            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Student</p>
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Pittsburgh, PA</p>
+            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> October 19, 1994</p>
         </div>
     </div>
 
@@ -76,9 +76,9 @@
                     <span class="w3-right w3-opacity">1 min</span>
                     <h4> ${blog[2]}</h4><br>
                     <hr class="w3-clear">
-                    <p> ${blog[3]}</p>
+                    <p style="margin: 2%"> ${blog[3]}</p>
                     <div class="w3-row-padding" style="margin:0 -16px">
-                        <div class="w3-half">
+                        <div style="margin: 2%">
                             <img id="postImage${blog[0]}" src="${blog[4]}" onerror="this.onerror=null;this.src='notFound';this.style.display='none'" style="width:100%" alt="Post Image" class="w3-margin-bottom">
                         </div>
                     </div>
