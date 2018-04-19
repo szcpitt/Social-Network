@@ -70,7 +70,7 @@
             </form:form>
         </div>
         <p id="blogListSize" style="display: none"><c:out value='${blogList.size()}'/></p>
-        <c:forEach items="${blogList}" var="blog">
+        <c:forEach items="${blogList}" var="blog" varStatus="loop">
                 <div class="card">
                     <img src="${blog[1]}" alt="Profile Image" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">1 min</span>
@@ -82,12 +82,12 @@
                             <img id="postImage${blog[0]}" src="${blog[4]}" onerror="this.onerror=null;this.src='notFound';this.style.display='none'" style="width:100%" alt="Post Image" class="w3-margin-bottom">
                         </div>
                     </div>
-                    <p id="checkAdded${blog[0]}" style="display: none">${blog[5]}</p>
-                    <form id="likeForm${blog[0]}"action="/addFavorite" method="POST" style="float: left">
+                    <p id="checkAdded${loop.count}" style="display: none">${blog[5]}</p>
+                    <form id="likeForm${loop.count}"action="/addFavorite" method="POST" style="float: left">
                         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
                         <button id="beforeClickLike" type="submit" name="blogId" value="${blog[0]}" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;"><i class="fa fa-thumbs-up"></i> Like</button>
                     </form>
-                    <button id="afterClickLike${blog[0]}" type="button" class="w3-button w3-margin-bottom" style="background-color: #ccc;color: black;display: none"><i class="fa fa-thumbs-up"></i> Liked</button>
+                    <button id="afterClickLike${loop.count}" type="button" class="w3-button w3-margin-bottom" style="background-color: #ccc;color: black;display: none"><i class="fa fa-thumbs-up"></i> Liked</button>
                     <button type="button" class="w3-button w3-margin-bottom" style="background-color: #3b5998;color: white;margin-left: 10px;"><i class="fa fa-comment"></i> Comment</button>
                 </div>
         </c:forEach>

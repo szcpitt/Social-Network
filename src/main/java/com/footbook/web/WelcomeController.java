@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 public class WelcomeController {
@@ -37,7 +36,7 @@ public class WelcomeController {
         for(Blog blog:blogs){
             int i=blogList.size();
             blogList.add(new ArrayList<>());
-            blogList.get(i).add(Integer.toString(i+1));
+            blogList.get(i).add(String.valueOf(blog.getId()));
             blogList.get(i).add(profileImage);
             blogList.get(i).add(name);
             blogList.get(i).add(blog.getContent());
