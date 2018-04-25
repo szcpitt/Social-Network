@@ -34,10 +34,6 @@ public class FriendsController {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long userId=user.getId();
         Long friend=Long.valueOf(friend_id);
-//        Profile profile=profileService.findById(userId);
-//        Profile profile2=profileService.findById(friend);
-//        profile.getFriends().add(new Relationship(userId,friend));
-//        profile2.getFriends().add(new Relationship(friend,userId));
         relationshipService.save(new Relationship(userId,friend));
         relationshipService.save(new Relationship(friend,userId));
         return "redirect:/friends";
